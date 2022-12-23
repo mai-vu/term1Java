@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package p2;
+
+import java.util.Scanner;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class DrunkWalker {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter integer value for max steps and boundary: ");
+      RandomWalker dw = new RandomWalker(sc.nextInt(), sc.nextInt());
+
+    }
+
+}

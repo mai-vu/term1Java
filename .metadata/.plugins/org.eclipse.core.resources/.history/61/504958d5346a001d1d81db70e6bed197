@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+package p2;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class Collisions {
+    
+    public static boolean samePosition(RandomWalker one, RandomWalker two) {
+        return (one.getX() == two.getX() && one.getY() == two.getY());
+        
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        final int bound = 2000000;
+        final int maxSteps =  100000;
+        RandomWalker p1 = new RandomWalker(maxSteps, -3, 0, bound);
+        RandomWalker p2 = new RandomWalker(maxSteps, 3, 0, bound);
+        boolean flag = true;
+        for (int i = 0; i < maxSteps && flag; i++) {
+            p1.takeStep();
+            p2.takeStep();
+            if (samePosition(p1, p2)) {
+                System.out.println(p1 + "\nMaxDistance: " + p1.getMaxDistance() 
+                    + "\n" + p2 + "\nMaxDistance: " + p1.getMaxDistance());
+                flag = false;
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,34 @@
+package p1;
+
+/** Tracking coin flip head streak.
+ * @author Mai Vu
+ * @version 2022
+ */
+public class CoinRunner {
+
+    /** Drives the program.
+     * @param args unused
+     */
+    public static void main(String[] args) {
+        int headStreak = 0;
+        int longestHeadStreak = 0;
+        final int numFlip = 100;
+        Coin coin = new Coin();
+        for (int i = 0; i < numFlip; i++) {
+            coin.flip();
+            System.out.println(coin);
+            if (coin.toString() == "Heads") {
+                headStreak++;
+            } else {
+                if (longestHeadStreak < headStreak) {
+                    longestHeadStreak = headStreak;
+                }
+                headStreak = 0;
+            }
+
+        }
+        System.out.println("Longest head Streak: " + longestHeadStreak);
+
+    }
+
+}

@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package p2;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class Collisions {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+}

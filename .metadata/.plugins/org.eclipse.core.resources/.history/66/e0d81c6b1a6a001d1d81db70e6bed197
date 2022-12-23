@@ -1,0 +1,19 @@
+package p1;
+
+/** Run the Name program. 
+ * @author Mai Vu
+ * @version 1.0 
+ */
+public class NameDriver {
+
+    /** Drives the program
+     * @param args
+     */
+    public static void main(String[] args) {
+        Name name1 = new Name("Joe", "Smith");
+        
+        
+
+    }
+
+}

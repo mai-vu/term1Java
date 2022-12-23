@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package p2;
+
+import java.util.Scanner;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class TestWalker {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        RandomWalker w1 = new RandomWalker(10, 5);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter integer value for max steps and boundary: ");
+        RandomWalker w2 = new RandomWalker(sc.nextInt(), sc.nextInt());
+        System.out.println(w1 + "\n" + w2);
+
+    }
+
+}

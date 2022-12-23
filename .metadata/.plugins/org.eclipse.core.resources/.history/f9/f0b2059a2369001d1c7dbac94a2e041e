@@ -1,0 +1,50 @@
+package q3;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class MIXChar {
+    
+    /** number of MIX characters. */
+    public static final int NUMCHAR = 56;
+    
+    /** MIX characters array. */
+    private static char[] MIXChar = {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Δ',
+            'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'Σ', 'Π', 'S', 'T', 'U', 
+            'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6',  '7', '8',
+             '9', '.', ',', '(', ')', '+', '-', '*', '/', '=', '$', '<', '>', '@', 
+             ';', ':', '\''};
+
+    private int charVal;
+   
+    public MIXChar(char c) {
+        if (isMIXChar(c)) {
+            for (int i = 0; i < NUMCHAR; i++) {
+                if (c == MIXChar[i]) {
+                    charVal = i;
+                    break;
+                }  
+            }
+        } else throw new IllegalArgumentException("Not a MIXChar character");
+    }
+    static boolean isMIXChar(char c) throws IllegalArgumentException {
+        boolean b = false;
+        for (int i = 0; i < NUMCHAR; i++) {
+            if (c == MIXChar[i]) {
+                b = true;
+                break;
+            }
+        }
+        return b; 
+    }
+    
+    public char toChar() {      
+        return MIXChar[charVal];
+        
+    }
+        
+    
+
+ 
+}

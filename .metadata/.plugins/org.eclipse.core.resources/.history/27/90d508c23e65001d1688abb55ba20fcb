@@ -1,0 +1,73 @@
+package p1;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/** Cat hotel objects that have its own name and contain list of guests. 
+ * method to add, remove to guests list.
+ * @author Mai Vu
+ * @version 2022
+ *
+ */
+public class CatHotel {
+    
+    /** CatHotel's name. */
+    private final String hotelName;
+    
+    /** ArrayList to store all hotel's guests names. */
+    private ArrayList<Cat> catList = new ArrayList<Cat>();
+    
+    /**
+     * Constructs a CatHotel object by defining its name 
+     * and instantiate an ArrayList as guests list
+     * @param hotelName
+     */
+    public CatHotel(String hotelName) {
+        this.hotelName = hotelName;
+        catList = new ArrayList<Cat>();
+               
+    }
+    
+    public void addCat(Cat cat) {
+        catList.add(cat);
+    }
+    
+    public void removeAllGuests() {
+        catList.clear();
+    }
+    
+    public int guestCount() {
+        return catList.size();     
+    }
+    
+    public int removeOldGuests(int ageLim) {
+        int numRemovedGuests =0;
+        Iterator<Cat> catIterator = catList.iterator();
+        while (catIterator.hasNext()) {
+            Cat temp = catIterator.next();
+            if (temp.getAge() > ageLim) {
+                catIterator.remove();
+                numRemovedGuests++;               
+            } 
+        }
+        return numRemovedGuests;       
+    }
+    
+    public void printGuestsList() {
+        System.out.println("Hotel guests: ");
+        if (catList.size() == 0) {
+            System.out.println("There is no guests in the hotel.");
+        } else {
+            for (Cat cat : catList) {
+            
+                System.out.println(cat);
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "CatHotel [hotelName=" + hotelName + ", catList=" + catList + "]";
+    }
+
+}

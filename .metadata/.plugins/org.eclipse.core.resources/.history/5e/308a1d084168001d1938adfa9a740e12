@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package q1;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class Course {
+    
+    /** Name of the course. */
+    private String courseName;
+    
+    /** Constructs a COurse object defined by it's name. */
+    public Course(String courseName) {
+        this.courseName = courseName;
+    }
+
+}

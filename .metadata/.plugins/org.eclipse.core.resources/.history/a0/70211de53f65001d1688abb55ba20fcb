@@ -1,0 +1,53 @@
+package p1;
+
+/** Create cat objects with name and age.
+ * @author Mai Vu
+ *
+ */
+public class Cat {
+    
+    private final String name;
+    
+    private int age;
+
+    public Cat(String name, int age) {        
+        this.name = name;
+        if (age < 0) {
+            this.age = 0;
+        } else {
+            this.age = age;
+        }
+    }
+    
+    public Cat(int age) {
+        this.name = "Cleo";
+        this.age = age;
+    }
+
+    /**
+     * @return the age
+     */
+    public int getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat name= " + name + ", age= " + age;
+    }
+
+}

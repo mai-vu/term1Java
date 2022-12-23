@@ -1,0 +1,220 @@
+package p1;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ComplexTest {
+    
+    /** 3 + 4 I real part. */
+    private static final int TEST1R = 3;
+
+    /** 3 + 4 I imaginary part. */
+    private static final int TEST1I = 4;
+
+    /** 1 + I real part. */
+    private static final int TEST2R = 1;
+
+    /** 1 + I imaginary part. */
+    private static final int TEST2I = 1;
+    
+    Complex z1 = new Complex(TEST1R, TEST1I);
+    Complex z2 = new Complex(TEST2R, TEST2I);
+    Complex z3;
+
+    @Test
+    void testHashCode() {
+        assertEquals(1572864, z1.hashCode(), 0.0000001);
+    }
+
+    @Test
+    void testComplex() {
+        assertEquals(TEST1R, z1.re);
+        assertEquals(TEST1I, z1.im);
+    }
+
+    @Test
+    void testPolarComplex() {
+        z3 = Complex.polarComplex(2.0, 45.00);
+        assertEquals(1.050643978, z3.re, 0.000000001);
+        assertEquals(1.701807049, z3.im, 0.000000001);
+        
+    }
+
+    @Test
+    void testAbs() {
+        double abs = z1.abs();
+        assertEquals(5.0, abs, 0.00001);
+        assertEquals(1.0, Complex.ONE.abs(), 0.00001);
+    }
+
+    @Test
+    void testArg() {
+        assertEquals(0.7853981633974483, z2.arg(),0.00000001);
+        assertEquals(1.5707963267948966, Complex.I.arg());
+        assertEquals(Math.PI, Complex.ZERO.subtract(Complex.ONE).arg(), 0.000000001);
+    }
+
+    @Test
+    void testConjugate() {
+        z3 = z1.conjugate();
+        assertEquals(3.0, z3.re);
+        assertEquals(-4.0, z3.im);       
+    }
+
+    @Test
+    void testAddComplex() {
+        z3 = z1.add(z2);
+        assertEquals(4.0, z3.re, 0.1);
+        assertEquals(5.0, z3.im, 0.1);
+    }
+
+    @Test
+    void testAddDouble() {
+        z3 = z1.add(2.5);
+        assertEquals(5.5,z3.re,  0.1);
+        assertEquals(4.0, z3.im);
+    }
+
+    @Test
+    void testSubtractComplex() {
+        z3 = z1.subtract(z2);
+        assertEquals(2.0, z3.re, 0.1);
+        assertEquals(3.0, z3.im, 0.1);
+        
+    }
+
+    @Test
+    void testSubtractDouble() {
+        z3 = z1.subtract(2.5);
+        assertEquals(0.5, z3.re, 0.1);
+        assertEquals(4.0, z3.im);
+    }
+
+    @Test
+    void testMultiplyComplex() {
+        z3 = z1.multiply(z2);
+        assertEquals(-1, z3.re, 0.1);
+        assertEquals(7.0, z3.im, 0.1);
+    }
+
+    @Test
+    void testMultiplyDouble() {
+        z3 = z1.multiply(2.0);
+        assertEquals(6.0, z3.re, 0.1);
+        assertEquals(8.0, z3.im, 0.1);
+    }
+
+    @Test
+    void testReciprocal() {
+        z3 = z1.reciprocal();
+        assertEquals(0.12, z3.re, 0.00001);
+        assertEquals(-0.16, z3.im, 0.000001);
+    }
+    @Test
+    void testReciprocal0() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Complex.ZERO.reciprocal();
+        });
+    }
+
+    @Test
+    void testDivideComplex() {
+        z3 = z1.divide(z2);
+        assertEquals(3.5, z3.re, 0.00001);
+        assertEquals(0.5, z3.im, 0.000001);
+        assertEquals(3.0, z1.divide(Complex.ONE).re, 0.00001);
+        assertEquals(4.0, z1.divide(Complex.ONE).im, 0.000001);
+        assertEquals(4.0, z1.divide(Complex.I).re, 0.00001);
+        assertEquals(-3.0, z1.divide(Complex.I).im, 0.000001);
+    }
+    void testDivideComplex0() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            z1.divide(Complex.ZERO);
+        });
+    }
+
+    @Test
+    void testDivideDouble() {
+        z3 = z1.divide(2.0);
+        assertEquals(1.5, z3.re, 0.00001);
+        assertEquals(4.0, z3.im, 0.000001);
+        assertEquals(-1.5, z1.divide(-2.0).re, 0.00001);
+        assertEquals(4.0, z1.divide(-2.0).im, 0.000001);
+    }
+    
+    @Test
+    void testDivideDouble0() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            z1.divide(0.0);
+//        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+          z1.divide(0.0);
+      });
+   
+        assertTrue(exception.getMessage().contains("Tried to divide by 0.0"));
+    }
+
+    @Test
+    void testSqrt() {
+        assertEquals(2.0, z1.sqrt().re, 0.00001);
+        assertEquals(1.0, z1.sqrt().im, 0.000001);
+    }
+
+    @Test
+    void testExp() {
+        assertEquals(-13.128783081462158, z1.exp().re, 0.00001);
+        assertEquals(-15.200784463067954, z1.exp().im, 0.00001);
+        assertEquals(1.4686939399158851, new Complex(1, 1).exp().re, 0.00001);
+        assertEquals(2.2873552871788423, new Complex(1, 1).exp().im, 0.00001);
+        assertEquals(3.0, z1.log().exp().re, 0.00001);
+        assertEquals(4.0, z1.log().exp().im, 0.00001);
+        
+    }
+
+    @Test
+    void testLog() {
+        assertEquals(1.6094379124341003, z1.log().re, 0.00001);
+        assertEquals(0.9272952180016122, z1.log().im, 0.00001);
+        assertEquals(0.3465735902799727, new Complex(1, 1).log().re, 0.00001);
+        assertEquals(0.7853981633974483, new Complex(1, 1).log().im, 0.00001);
+        assertEquals(3.0, z1.exp().log().re, 0.00001);
+        assertEquals(-2.2831853071795867, z1.exp().log().im, 0.00001);
+
+    }
+
+    @Test
+    void testEqualsObject() {
+        assertEquals(false, z1.equals(z2));
+        assertEquals(true, z1.equals(z1));
+        assertEquals(false, z1.equals(0.00));
+        assertEquals(false, Complex.ONE.equals(Complex.I));
+        assertEquals(false, Complex.ONE.equals(Complex.ZERO));
+        assertEquals(false, Complex.I.equals(Complex.ZERO));
+    }
+
+    @Test
+    void testToString() {
+//        if (im == 0.0) {
+//            return Double.toString(re);
+//        } else if (re == 0.0) {
+//            return Double.toString(im) + "i";
+//        } else if (im > 0) {
+//            return Double.toString(re) + " + " 
+//                      + Double.toString(im) + "i";
+//        } else {
+//            return Double.toString(re) + " - " 
+//                    + Double.toString(-im) + "i";   
+//        }
+        z3 = new Complex(3, -4);
+        assertEquals("3.0 - 4.0i", z3.toString());
+        assertEquals("1.0", Complex.ONE.toString());
+        assertEquals("3.0 + 4.0i", z1.toString());
+        assertEquals("1.0i", Complex.I.toString());
+        assertEquals("-1.0", Complex.ZERO.subtract(Complex.ONE).toString());
+        
+        
+    }
+
+
+}

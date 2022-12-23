@@ -1,0 +1,150 @@
+package ca.bcit.comp1510.lab06;
+
+
+/**
+ * This is where you put your description about what this class does. You
+ * don't have to write an essay but you should describe exactly what it does.
+ * Describing it will help you to understand the programming problem better.
+ *
+ * @author Your Name goes here
+ * @version 1.0
+ */
+public class TimesheetRow {
+    
+    /** Array of mask value to help get specific day work hours. */
+    private static final long[] MASK = {0xFFL, 0xFF00L, 0xFF0000L, 0xFF000000L,
+        0xFF00000000L, 0xFF0000000000L, 0xFF000000000000L};
+    
+    /** Array of mask value. */
+    private static final long[] UMASK = {0xFFFFFFFFFFFFFF00L, 
+                                         0xFFFFFFFFFFFF00FFL,
+                                         0xFFFFFFFFFF00FFFFL,
+                                         0xFFFFFFFF00FFFFFFL,
+                                         0xFFFFFF00FFFFFFFFL,
+                                         0xFFFF00FFFFFFFFFFL,
+                                         0xFF00FFFFFFFFFFFFL};
+    
+    /** number of days in a week. */
+    final int weekDays = 7;
+    
+    /** number of bits in a byte. */
+    final int eightBits = 8;
+    
+    /** Project number. */
+    private int project;
+    
+    /** work package. */
+    private String workPackage;
+    
+    /** a long with the lower 7 bytes set to the scaled hour entries. */
+    private long hours;
+    
+    /** Constructor for TimesheetRow object with no argument. */
+    public TimesheetRow() {  
+    }
+    
+    /** constructor and one which takes empNum and endWeek.
+     * the constructor must adjust the end date to be a Friday (null is OK). 
+     * @param project project number
+     * @param workPackage project name
+     * @param dayHoursList  hours for each day of the week 
+     */
+    public TimesheetRow(int project, String workPackage, 
+                                                    float... dayHoursList) 
+        throws IllegalArgumentException {
+        this.project = project;
+        this.workPackage = workPackage;
+        for (int i = 0, j = eightBits; i < dayHoursList.length; i++) {
+            this.hours |= (long) dayHoursList[i] << (j * i); 
+        }
+    }
+
+    /** Project getter.
+     * @return the project
+     */
+    public int getProject() {
+        return project;
+    }
+
+    /** Project setter.
+     * @param project the project to set
+     */
+    public void setProject(int project) {
+        this.project = project;
+    }
+
+    /** Work Package getter.
+     * @return the workPackage
+     */
+    public String getWorkPackage() {
+        return workPackage;
+    }
+
+    /** Work Package setter.
+     * @param workPackage the workPackage to set
+     */
+    public void setWorkPackage(String workPackage) {
+        this.workPackage = workPackage;
+    }
+
+    /** Hours getter.
+     * @return the hours
+     */
+    public long getHours() { 
+        return hours;
+    }
+
+    /** Hours setter.
+     * @param hours the hours to set
+     */
+    public void setHours(long hours) {
+        this.hours = hours;
+    }
+    
+    /** takes a day of the week number (0 is Saturday, 6 is Friday) 
+     * and returns the hours for that day as a float.
+     * @param daysOfWeek 0-6 (0 is Saturday, 6 is Friday)
+     * @return hour of the day
+     */
+    public float getHour(int daysOfWeek) {   
+        float dayHours = 0;     
+        int j = eightBits; 
+        if (daysOfWeek >= 0 && daysOfWeek < weekDays) {
+            dayHours = ((hours | UMASK[daysOfWeek]) & MASK[daysOfWeek]) 
+                    >> (j * daysOfWeek);
+        }
+        return dayHours;
+    } 
+    
+    /**  takes a day of the week number (as above) and hours as a float 
+     * and sets it into the appropriate byte of hours.
+     * @param daysOfWeek 0-6 (0 is Saturday, 6 is Friday)
+     * @param hour hours charged of that day
+     * */
+    public void setHour(int daysOfWeek, float hour) {
+        int j = eightBits;
+        if (daysOfWeek >= 0 && daysOfWeek < weekDays) {
+            hours = hours & UMASK[daysOfWeek] 
+                        | ((long) hour << (daysOfWeek * j));
+        } else {
+            throw new IllegalArgumentException();                   
+        }
+    }
+    
+    /** prints out project info, which includes the hours for each day, 
+     * in order (Sat. to Fri.)
+     * @return String includes the hours for each day in order (Sat. to Fri.)
+     */
+    public String toString() {
+        final double dec = 10.00;
+        String s;
+        s = "Project: " + project + "\nWork Package: " + workPackage + "\n";
+        String[] daysInWeek = {"Saturday", "Sunday", "Monday", "Tuesday",
+                               "Wednesday", "Thursday", "Friday"};
+        for (int i = 0; i < weekDays; i++) {
+            s += daysInWeek[i] + ": " + getHour(i) / dec + " hours charged\n";
+        } 
+        return s;        
+    }
+         
+}

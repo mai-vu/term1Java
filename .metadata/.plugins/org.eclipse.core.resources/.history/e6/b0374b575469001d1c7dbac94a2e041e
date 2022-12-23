@@ -1,0 +1,64 @@
+/**
+ * 
+ */
+package p1;
+
+import java.util.Scanner;
+
+
+/**
+ * @author vhmai
+ *
+ */
+public class Main {
+    private static final long[] MASK = {0xFFL, 0xFF00L,
+            0xFF0000L, 0xFF000000L,0xFF00000000L,
+            0xFF0000000000L, 0xFF000000000000L};
+    
+    private static final long[] UMASK =
+        {0xFFFFFFFFFFFFFF00L,
+        0xFFFFFFFFFFFF00FFL,
+        0xFFFFFFFFFF00FFFFL,
+        0xFFFFFFFF00FFFFFFL,
+        0xFFFFFF00FFFFFFFFL,
+        0xFFFF00FFFFFFFFFFL,
+        0xFF00FFFFFFFFFFFFL};
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        double satHours = 3.2;
+        double sunHours = 1.1;
+        double monHours = 4.5;
+        double tuesHours = 5.5;
+        double wedHours = 3.2;
+        double thursHours = 2.0;
+        double friHours = 5.0;
+        long hours =0;
+        float[] dayHoursList = {32, 11, 45, 55, 32, 20, 50};
+        hours = (long) (satHours * 10) | ((long)(sunHours * 10) << 8) | ((long)(monHours * 10) << 16) | ((long)(tuesHours * 10) << 24)
+                | ((long)(wedHours * 10) << 32) | ((long)(thursHours * 10) << 40) | ((long)(friHours * 10) << 48);
+//        for (int i = 0, j =8; i < 7;i++) {
+//            hours |= (long)dayHoursList[i] << (j *i); 
+//        }
+        float dayHours;
+        dayHours = (hours & MASK[1])>>8;  
+//        System.out.println(Long.toBinaryString(((hours | UMASK[1]) & MASK[1])>>8));
+        System.out.println(((hours | UMASK[0]) & MASK[0]));
+        System.out.println(((hours | UMASK[1]) & MASK[1])>>8);
+        System.out.println(((hours | UMASK[2]) & MASK[2])>>16);
+        System.out.println(((hours | UMASK[3]) & MASK[3])>>24);
+        System.out.println(((hours | UMASK[4]) & MASK[4])>>32);
+        System.out.println(((hours | UMASK[5]) & MASK[5])>>40);
+        System.out.println(((hours | UMASK[6]) & MASK[6])>>48);
+//        for (int i = 0, j =8; i < 7;i++) {
+//            dayHours = ((hours | UMASK[i]) & MASK[i])>> (j *i);
+//        System.out.println(dayHours);
+//        }
+        System.out.println(dayHoursList);
+
+    }    
+        
+}
+

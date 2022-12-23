@@ -1,0 +1,112 @@
+/**
+ * 
+ */
+package q2;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author Mai Vu
+ *
+ */
+class TimesheetRowTester {
+
+    /**
+     * @throws java.lang.Exception
+     */
+    @BeforeEach
+    void setUp() throws Exception {
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#TimesheetRow()}.
+     */
+    @Test
+    void testTimesheetRow() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#TimesheetRow(int, java.lang.String, float[])}.
+     */
+    @Test
+    void testTimesheetRowIntStringFloatArray() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#getProject()}.
+     */
+    @Test
+    void testGetProject() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#setProject(int)}.
+     */
+    @Test
+    void testSetProject() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#getWorkPackage()}.
+     */
+    @Test
+    void testGetWorkPackage() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#setWorkPackage(java.lang.String)}.
+     */
+    @Test
+    void testSetWorkPackage() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#getHours()}.
+     */
+    @Test
+    void testGetHours() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#setHours(long)}.
+     */
+    @Test
+    void testSetHours() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#getHour(int)}.
+     */
+    @Test
+    void testGetHour() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#setHour(int, float)}.
+     */
+    @Test
+    void testSetHour() {
+        fail("Not yet implemented");
+    }
+
+    /**
+     * Test method for {@link q2.TimesheetRow#toString()}.
+     */
+    @Test
+    void testToString() {
+        fail("Not yet implemented");
+    }
+
+}

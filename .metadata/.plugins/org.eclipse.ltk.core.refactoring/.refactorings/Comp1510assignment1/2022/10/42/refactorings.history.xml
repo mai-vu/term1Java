@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 packages to &apos;hold/src&apos;&#x0D;&#x0A;- Original project: &apos;Comp1510assignment1&apos;&#x0D;&#x0A;- Destination element: &apos;hold/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Comp1510assignment1/src/q2&#x0D;&#x0A;     Comp1510assignment1/src/q3&#x0D;&#x0A;     Comp1510assignment1/src/q1&#x0D;&#x0A;     Comp1510assignment1/src/q4" description="Copy packages" destination="=hold/src" element1="/src&lt;q2" element2="/src&lt;q3" element3="/src&lt;q1" element4="/src&lt;q4" flags="589830" fragments="4" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1665506811815" version="1.0"/>
+</session>

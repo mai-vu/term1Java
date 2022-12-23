@@ -1,0 +1,17 @@
+package p1;
+
+/** Drive the Name program. 
+ * @author Mai Vu
+ *@version 1.0
+ */
+public class NameDriver {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+}

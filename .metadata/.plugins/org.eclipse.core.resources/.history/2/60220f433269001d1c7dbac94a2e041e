@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package p1;
+
+import java.time.DayOfWeek;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+
+/**
+ * @author vhmai
+ *
+ */
+public class lecture1510 {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        DayOfWeek endWeek = DayOfWeek.of(2);
+        System.out.println(endWeek);
+        endWeek = endWeek.with(TemporalAdjusters.
+                next(DayOfWeek.FRIDAY));
+        System.out.println(endWeek);
+      
+    }
+
+}
+
+

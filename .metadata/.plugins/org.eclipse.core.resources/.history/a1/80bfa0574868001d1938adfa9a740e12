@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package q1;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class Course {
+    
+    /** Name of the course. */
+    private String courseName;
+    
+    
+    private Student studentArray[] = new Student[5];
+    
+    /** Constructs a COurse object defined by it's name. 
+     * @param courseName Name of the course
+     */
+    public Course(String courseName) {
+        this.courseName = courseName;
+
+    }
+    
+    public void addStudent(Student student) {
+        while (studentArray.length <=5) {
+            
+        }
+//        studentArray[0] = student;
+    }
+
+}

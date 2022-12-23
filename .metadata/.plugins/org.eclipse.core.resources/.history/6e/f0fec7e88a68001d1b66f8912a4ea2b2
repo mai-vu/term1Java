@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package p1;
+
+import java.time.DayOfWeek;
+import java.util.ArrayList;
+
+/**
+ * @author vhmai
+ *
+ */
+public class lecture1510 {
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        DayOfWeek endWeek = DayOfWeek.of(5);
+        System.out.println(endWeek);
+        int v3 = 0b11;
+        System.out.println(v3);
+
+        int va = 11;
+        System.out.println(va);
+
+        int vb = 011;
+        System.out.println(vb);
+      
+    }
+
+}
+
+

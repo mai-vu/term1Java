@@ -1,0 +1,33 @@
+package p2;
+
+import java.util.Scanner;
+
+/** Simulate a drunken walker.
+ * @author Mai Vu
+ *
+ */
+public class DrunkWalker {
+
+    /** Drives the program.
+     * @param args unused
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Number of drunk walk: ");
+        int numTest = sc.nextInt();
+        int fallsCount = 0;    
+        for (int i = 0; i < numTest; i++) {     
+            RandomWalker dw = new RandomWalker(90, 3);
+            dw.walk();
+            System.out.println(dw);
+            if (dw.getCurStepsCount() < dw.getMaxSteps()) {
+                fallsCount++;
+            }          
+        }
+        System.out.println("Number of tests: " + numTest 
+                + "\nNumber of Falls: " + fallsCount);
+        sc.close();
+        
+    }
+
+}

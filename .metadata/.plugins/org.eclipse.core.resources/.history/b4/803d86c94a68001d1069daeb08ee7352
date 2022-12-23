@@ -1,0 +1,51 @@
+/**
+ * 
+ */
+package q1;
+
+import java.util.ArrayList;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class Course {
+    
+    /** Name of the course. */
+    private String courseName;
+    
+    
+    private ArrayList<Student> studentList = new ArrayList<Student>();
+    
+    /** Constructs a Course object defined by it's name. 
+     * @param courseName Name of the course
+     */
+    public Course(String courseName) {
+        this.courseName = courseName;     
+    }
+    
+    
+    public void addStudent(Student student) {
+        if (studentList.size() <5) {
+            studentList.add(student);
+        } else {
+            throw new IllegalArgumentException(
+                    "student list has reached max capacity of 5");
+        }
+    }
+    
+    
+    public double average() {
+        int totalAverage = 0;
+        int totalScore =0;
+        int i = 0;
+        while ( i <= studentList.size()) {
+            totalScore += studentList.get(i).average();
+            i++;
+        }
+        i--;
+        totalAverage = totalScore / i;
+        return totalAverage;       
+    }
+
+}

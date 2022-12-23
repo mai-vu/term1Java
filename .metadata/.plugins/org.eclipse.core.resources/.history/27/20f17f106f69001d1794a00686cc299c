@@ -1,0 +1,83 @@
+package ca.bcit.comp1510.lab06;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Test;
+
+/**
+ * This is where you put your description about what this class does. You
+ * don't have to write an essay but you should describe exactly what it does.
+ * Describing it will help you to understand the programming problem better.
+ *
+ * @author Your Name goes here
+ * @version 1.0
+ */
+public class TimesheetRowTest {
+    
+    private static float[] dayHoursList = {32, 11, 45, 55, 32, 20, 50};
+    
+    private TimesheetRow row = new TimesheetRow(1, "project1", dayHoursList);
+    
+    @Test
+    void testTimesheetRow() {
+        TimesheetRow row2 = new TimesheetRow();
+        assertEquals(0, row2.getProject());      
+    }
+
+    @Test
+    void testTimesheetRowIntStringFloatArray() {
+//        TimesheetRow row = new TimesheetRow(0, "project0", dayHoursList);
+        assertEquals(32, row.getHour(0));
+    }
+
+    @Test
+    void testGetProject() {
+        assertEquals(1, row.getProject());
+    }
+
+    @Test
+    void testSetProject() {
+        row.setProject(2);
+        assertEquals(2, row.getProject());
+    }
+
+    @Test
+    void testGetWorkPackage() {
+        assertEquals("project1", row.getWorkPackage());
+    }
+
+    @Test
+    void testSetWorkPackage() {
+        row.setWorkPackage("test");
+        assertEquals("test", row.getWorkPackage());
+    }
+
+    @Test
+    void testGetHours() {
+        String s = row.getHours() + "";
+        assertEquals("14095877432740640", s);
+    }
+
+    @Test
+    void testSetHours() {
+        row.setHours(1235);
+        assertEquals(1235, row.getHours());
+    }
+
+    @Test
+    void testGetHour() {
+        assertEquals(32, row.getHour(0));
+    }
+
+    @Test
+    void testSetHour() {
+        row.setHour(2,11);
+        assertEquals(11, row.getHour(2));
+    }
+
+    @Test
+    void testToString() {
+        fail("Not yet implemented");
+    }
+}

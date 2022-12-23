@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package p2;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class RandomWalker {
+    
+    private int x;
+    
+    private int y;
+    
+    private int maxSteps;
+    
+    private int curStepsCount;
+    
+    public int boundary;
+    
+    public RandomWalker(int maxSteps, int boundary) {
+        this.maxSteps = maxSteps;
+        this.boundary = boundary;       
+    }
+    
+    public RandomWalker(int maxSteps, int x, int y, int boundary) {
+        this.maxSteps = maxSteps;
+        this.x = x;
+        this.y = y;
+        this.boundary = boundary; 
+        this. curStepsCount = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "RandomWalker Coordinate x: " + x + ", y=" + y 
+                + "\nCurrent Steps Count: " + curStepsCount;
+    }
+}

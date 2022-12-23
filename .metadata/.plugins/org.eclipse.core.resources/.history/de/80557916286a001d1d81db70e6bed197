@@ -1,0 +1,84 @@
+/**
+ * 
+ */
+package p2;
+
+import java.util.Random;
+
+/**
+ * @author Mai Vu
+ *
+ */
+public class RandomWalker {
+    
+    /** Walker's current step counts. */
+    private static int curStepsCount;
+     
+    /** walker's x coord. */
+    private int x;
+    
+    
+    /** walker's y coord. */
+    private int y;
+    
+    /** Maximum Steps. */
+    private int maxSteps;   
+    
+    /** boundary. */
+    private int boundary;
+    
+    
+    /** Constructor for RandomWalker object, defines by max Steps and boundary. 
+     * @param maxSteps maximum steps
+     * @param boundary value of boundary*/
+    public RandomWalker(int maxSteps, int boundary) {
+        this.maxSteps = maxSteps;
+        this.boundary = boundary;       
+    }
+    
+    /** Constructor for RandomWalker object, defines by max Steps, coord(x&y),
+     *  and boundary. 
+     * @param maxSteps maximum steps
+     * @param x x coord
+     * @param y y coord
+     * @param boundary value of boundary*/
+    public RandomWalker(int maxSteps, int x, int y, int boundary) {
+        this.maxSteps = maxSteps;
+        this.x = x;
+        this.y = y;
+        this.boundary = boundary; 
+        this.curStepsCount = 0;
+    }
+    
+    /** simulate object taking 1 step. */
+    public void takeStep() {
+        Random gen = new Random();
+        int i = gen.nextInt(2 + 2);
+        switch (i) {
+            case 0:
+                y++;
+                curStepsCount++;
+                break;
+            case 1:
+                x++;
+                curStepsCount++;
+                break;
+            case 2:
+                y--;
+                curStepsCount++;
+                break;
+            case (2 + 1):
+                x--;
+                curStepsCount++;
+                break;
+            default: 
+                System.out.println("Error taking step");          
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "RandomWalker Coordinate x: " + x + ", y=" + y 
+                + "\nCurrent Steps Count: " + curStepsCount;
+    }
+}
