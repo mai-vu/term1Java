@@ -1,0 +1,48 @@
+package q1;
+
+/**
+ * This is where you put your description about what this class does. You
+ * don't have to write an essay but you should describe exactly what it does.
+ * Describing it will help you to understand the programming problem better.
+ *
+ * @author Your Name goes here
+ * @version 1.0
+ */
+public class TestCourse {
+    /**
+     * This is the main method (entry point) that gets called by the JVM.
+     *
+     * @param args command line arguments.
+     */
+    public static void main(String[] args) {
+        final double six = 6.0;
+        final double five = 5.0;
+        final double nine = 9.0;
+        final double eight = 8.0;
+        Address a1 = new Address("Tanner", "Vacouver", "BC", "V5R 2T4");
+        Address a2 = new Address("Jade", "Port Coquitlam", "BC", "V7V 1Y8");
+        Address a3 = new Address("Shaughnessy", "Vacouver", "BC", "V3C 4S7");
+        Address a4 = new Address("Tolmie", "Vacouver", "BC", "V6R 4C5");
+        Address a5 = new Address("28th", "Vacouver", "BC", "V5R 1S7");
+        Address school = new Address("Willingdon", "Vacouver", "BC", "V5G 3H2");
+        Student s1 = new Student("Ann", "Smith", a1, school, six, eight, nine);
+        Student s2 = new Student("Joe", "Smith", a2, school, five, eight, six);
+        Student s3 = new Student("Mia", "Lee", a3, school, eight, six, nine);
+        Student s4 = new Student("Linda", "Green", a4, school, six, six, six);
+        Student s5 = new Student("Tom", "King", a5, school, five, eight, eight);
+        Student s6 = new Student(); 
+        Course java = new Course("Java Intro");
+        java.addStudent(s1);
+        java.addStudent(s2);
+        java.addStudent(s3);
+        java.addStudent(s4);
+        java.addStudent(s5);
+        java.addStudent(s6);
+        java.roll(); 
+        java.average();
+        System.out.println("Class average of:" + java.getCourseName() + " " 
+                    + java.average());
+        System.out.println("Question one was called and ran sucessfully.");
+    }
+
+}
